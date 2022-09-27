@@ -7,23 +7,23 @@ import { cartData } from '../data/dummy';
 import { Button } from '.';
 
 const Cart = () => {
-  const { currentColor } = useStateContext();
+  const { currentColor, handleClose } = useStateContext();
+
+
 
   return (
     <div className="bg-half-transparent w-full fixed nav-item top-0 right-0 ">
       <div className="float-right h-screen  duration-1000 ease-in-out dark:text-gray-200 transition-all dark:bg-[#484B52] bg-white md:w-400 p-8">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mt-0">
 
           <p className="font-semibold text-lg">Shopping Cart</p>
 
-          <Button
-            color={currentColor}
-            bgHoverColor="light-gray"
-            size="2xl"
-            borderRadius="50%"
-          >
-            {<MdOutlineCancel />}
-          </Button>
+          <button type='button'
+            onClick={() => handleClose('cart')}
+            className='text-lg rounded-full p-2 hover:bg-light-gray mt-4 block '>
+            <MdOutlineCancel />
+          </button>
+
         </div>
         {cartData?.map((item, index) => (
           <div key={index}>
@@ -56,14 +56,14 @@ const Cart = () => {
             <p className="font-semibold">$890</p>
           </div>
         </div>
-        <div className="mt-5">
+        <div className="mt-0 mb-4">
           <Button
             color="white"
             bgColor={currentColor}
             text="Place Order"
             borderRadius="10px"
             width="full"
-            href='/'
+
           />
         </div>
       </div>
